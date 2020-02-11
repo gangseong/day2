@@ -1,0 +1,55 @@
+#include <iostream>
+const int Max = 10;
+int input(double ar[], int limit);    
+void output(const double ar[], int n);
+void average(double ar[], int n);
+
+int main()
+{
+	using namespace std;
+	double golf[Max];
+	int size = input(golf, Max);
+	
+	cout << "골프 스코어" << endl;
+	output(golf, size);
+	average(golf, size);
+	return 0;
+}
+int input(double ar[], int limit)        //입력 함수
+{
+	using namespace std;
+	int temp;
+	int i;
+	for (i = 0; i < limit; i++)
+	{
+		cout << (i+1) << "번 골프 점수는 (종료 = q)";
+		cin >> temp;
+		if (!cin)
+		{
+			cin.clear();
+			while (cin.get() != '\n')
+				continue;
+			cout << "종료하겠습니다.\n";
+			break;
+		}
+		ar[i] = temp;
+		
+	}
+	return i;
+}
+void output(const double ar[], int n)
+{
+	using namespace std;
+	for (int i = 0; i < n; i++)
+	{
+		cout << (i+1) << "번홀의 점수는 :";
+		cout << ar[i] <<" ";
+	}
+}
+void average(double ar[], int n)
+{
+	double total = 0.0;
+	for (int i = 0; i < n; i++)
+		total += ar[i];
+	std::cout << "\n평균스코어는 " << total / n << "입니다.\n";
+}

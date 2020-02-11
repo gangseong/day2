@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+const int Max = 10;
+int Fill_array(double arr[], int Max);
+void show_array(double arr[], int size);
+void Reverse_array(double arr[], int size);
+void Reverse_array_2(double arr[], int size);
+int main()
+{
+	double program[Max];
+
+	int size = Fill_array(program, Max);
+	show_array(program, size);
+	Reverse_array(program, size);
+	show_array(program, size);
+	Reverse_array_2(program, size);
+	show_array(program, size);
+	
+	return 0;
+}
+int Fill_array(double arr[], int Max)
+{
+	double temp;
+	int i;
+	for (i = 0; i < Max; i++)
+	{
+		cout << "double형 값들을 입력하세요 -> ";
+		cin >> temp;
+		if (!cin)
+			{
+				cin.clear();
+				while (cin.get() != '\n')
+					continue;
+				cout << "입력 불량;, 입력 과정을 끝내겠습니다. \n";
+				break;
+			}
+			arr[i] = temp;
+	}
+	return i;
+}
+void show_array(double arr[], int size)
+{
+	for (int i = 0; i <size; i++)
+	{
+		cout << (i+1) << "번";
+		cout << arr[i] << endl;
+	}
+}
+void Reverse_array(double arr[], int size)
+{
+	double value;
+
+	cout << "뒤집기! \n";
+	int i, j;
+	for (i = 0,j =Max-1; i < j; i++,j--)
+	{
+		value = arr[i];
+		arr[i] = arr[j];
+		arr[j] = value;
+	}
+}
+void Reverse_array_2(double arr[], int size)
+{
+	double value;
+
+	cout << "첫 원소와 마지막 원소 제외한 나머지 뒤집기! \n";
+	int i, j;
+	for (i = 1, j = Max - 2; i < j; i++, j--)
+	{
+		value = arr[i];
+		arr[i] = arr[j];
+		arr[j] = value;
+	}
+}
